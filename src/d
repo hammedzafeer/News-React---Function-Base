@@ -1,0 +1,53 @@
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Nav from './Component/Navbar/Nav'
+import News from './Component/News/News'
+import LoadingBar from 'react-top-loading-bar'
+import { useState } from 'react'
+
+
+const App = () => {
+
+  const [progress, setProgress] = useState(0);
+  const progressSet = (progress) => {
+    setProgress(progress)
+
+  }
+  const pageSize = 10;
+  const API = "49a7dc909a284db1a5cb4d10f270f790";
+
+  return (
+
+    <div>
+      <LoadingBar
+        color='#f11946'
+        height={4}
+        progress={progress}
+      // onLoaderFinished={() => setProgress(0)}
+      />
+      <Nav />
+      {/* <News setProgress={this.setProgress} pageSize={this.pageSize} country="us" apiKey={this.API} category="general" /> */}
+      <Routes >
+
+        <Route exect path='/' element={<News setProgress={progressSet} key="general"
+          pageSize={pageSize} country="us" apiKey={API} category="general" />} />
+        <Route exect path='/general' element={<News setProgress={progressSet} key="general"
+          pageSize={pageSize} country="us" apiKey={API} category="general" />} />
+        <Route exect path='/business' element={<News setProgress={progressSet} key="business"
+          pageSize={pageSize} country="us" apiKey={API} category="business" />} />
+        <Route exect path='/entertainment' element={<News setProgress={progressSet} key="entertainment"
+          pageSize={pageSize} country="us" apiKey={API} category="entertainment" />} />
+        <Route exect path='/health' element={<News setProgress={progressSet} key="health"
+          pageSize={pageSize} country="us" apiKey={API} category="health" />} />
+        <Route exect path='/science' element={<News setProgress={progressSet} key="science"
+          pageSize={pageSize} country="us" apiKey={API} category="science" />} />
+        <Route exect path='/sports' element={<News setProgress={progressSet} key="sports"
+          pageSize={pageSize} country="us" apiKey={API} category="sports" />} />
+        <Route exect path='/technology' element={<News setProgress={progressSet} key="technology"
+          pageSize={pageSize} country="us" apiKey={API} category="technology" />} />
+      </Routes>
+    </div>
+  )
+}
+
+export default App;
